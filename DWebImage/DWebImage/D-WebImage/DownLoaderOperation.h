@@ -11,7 +11,15 @@
 
 @interface DownLoaderOperation : NSOperation
 
-//接收地址
-@property (nonatomic,copy) NSString *URLStr;
+
+/**
+ 类方法,实例化操作,并传入图片地址和下载完成回调
+
+ @param URLStr       图片地址
+ @param successBlock 
+
+ @return <#return value description#>
+ */
++(instancetype)downloadWithURLStr:(NSString *)URLStr successBlock:(void(^)(UIImage *)) successBlock;
 
 @end
