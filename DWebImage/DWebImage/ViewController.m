@@ -7,8 +7,10 @@
 //
 
 #import "ViewController.h"
-
+#import "DownLoaderOperation.h"
 @interface ViewController ()
+
+@property (nonatomic,strong) NSOperationQueue *queue;
 
 @end
 
@@ -16,7 +18,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    //创建队列
+    self.queue = [[NSOperationQueue alloc] init];
+    //创建自定义操作
+    DownLoaderOperation *op = [[DownLoaderOperation alloc] init];
+    //把自定义操作添加到队列
+    [self.queue addOperation:op];
+    
+    //向自定义操作中传入图片地址
+    op.URLStr = @"http://img05.tooopen.com/images/20140604/sy_62331342149.jpg";
+    
+    
 }
 
 
